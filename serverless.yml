@@ -43,21 +43,21 @@ provider:
 
 functions:
   graphql:
-    handler: handler.graphqlHandler
+    handler: src/handler.graphqlHandler
     events:
     - http:
         path: graphql
         method: post
         cors: true
   playground:
-    handler: handler.playgroundHandler
+    handler: src/handler.playgroundHandler
     events:
     - http:
         path: playground
         method: get
         cors: true
   graphiql:
-    handler: handler.graphiqlHandler
+    handler: src/handler.graphiqlHandler
     events:
     - http:
         path: graphiql

@@ -1,11 +1,10 @@
 'use strict';
 
 import { makeExecutableSchema } from 'graphql-tools';
-import { schema } from './src/schema.graphql';
-import { resolvers } from './src/resolvers';
-
-const { graphqlLambda, graphiqlLambda } = require('apollo-server-lambda');
-const { lambdaPlayground } = require('graphql-playground-middleware');
+import { schema } from './schema.graphql';
+import { resolvers } from './resolvers';
+import { graphqlLambda, graphiqlLambda } from 'apollo-server-lambda';
+import { lambdaPlayground } from 'graphql-playground-middleware';
 
 const GraphQLSchema = makeExecutableSchema({
   typeDefs: schema,
@@ -18,9 +17,6 @@ exports.graphqlHandler = function graphqlHandler(event, context, callback) {
     output.headers['Access-Control-Allow-Origin'] = '*';
     callback(error, output);
   }
-   
-  console.log('Received event', event);
-
   const handler = graphqlLambda({ schema: GraphQLSchema });
   return handler(event, context, callbackFilter);
 };

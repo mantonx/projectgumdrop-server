@@ -1,6 +1,9 @@
+'use strict';
+
 import AWS from 'aws-sdk';
 import dynogels from 'dynogels-promisified';
 import Joi from 'Joi';
+import {User} from './schema';
 
 require('babel-polyfill');
 
@@ -14,12 +17,7 @@ dynogels.dynamoDriver(dynamodb);
 const Users = dynogels.define('users', {
   hashKey : 'id',
   timestamps : true,
-  schema : {
-    id: Joi.string().email(),
-    firstName : Joi.string(),
-    lastName : Joi.string(),
-    uuid : dynogels.types.uuid(),
-  },
+  schema : User,
 });
 
 const projectGumpDropEndpoint = {
@@ -27,8 +25,9 @@ const projectGumpDropEndpoint = {
     return Users
     .getAsync(args.email)
     .then(function(res){
-      console.log(res.attrs);
-      return res.attrs;;
+      if (res) {
+        return res.attrs;
+      }
     })
     .catch(function(err){
       console.error(err);
@@ -38,8 +37,9 @@ const projectGumpDropEndpoint = {
     return Users
     .createAsync({id: args.email, firstName: args.firstName, lastName: args.lastName})
     .then(function(res){
-      console.log(res.attrs);
-      return res.attrs;
+      if (res) {
+        return res.attrs;
+      }
     })
     .catch(function(err){
       console.error(err);
