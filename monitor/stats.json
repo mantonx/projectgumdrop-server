@@ -1,0 +1,219 @@
+[
+  {
+    "timeStamp": 1511813321355,
+    "time": 2686,
+    "hash": "32af20003f2a7fe3f086",
+    "errors": [],
+    "size": 114637,
+    "assets": [
+      {
+        "name": "src/handler.js",
+        "chunks": [
+          0
+        ],
+        "size": 90586,
+        "minified": true
+      },
+      {
+        "name": "src/handler.js.gz",
+        "chunks": [],
+        "size": 24051
+      }
+    ],
+    "chunks": [
+      {
+        "size": 175938,
+        "files": [
+          "src/handler.js"
+        ],
+        "modules": [
+          {
+            "name": "./node_modules/Joi/lib/cast.js",
+            "size": 1259,
+            "id": "./node_modules/Joi/lib/cast.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/errors.js",
+            "size": 10800,
+            "id": "./node_modules/Joi/lib/errors.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/index.js",
+            "size": 13444,
+            "id": "./node_modules/Joi/lib/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/language.js",
+            "size": 7383,
+            "id": "./node_modules/Joi/lib/language.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/ref.js",
+            "size": 1117,
+            "id": "./node_modules/Joi/lib/ref.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/schemas.js",
+            "size": 645,
+            "id": "./node_modules/Joi/lib/schemas.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/set.js",
+            "size": 2620,
+            "id": "./node_modules/Joi/lib/set.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/alternatives/index.js",
+            "size": 5686,
+            "id": "./node_modules/Joi/lib/types/alternatives/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/any/index.js",
+            "size": 26583,
+            "id": "./node_modules/Joi/lib/types/any/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/array/index.js",
+            "size": 21030,
+            "id": "./node_modules/Joi/lib/types/array/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/binary/index.js",
+            "size": 2227,
+            "id": "./node_modules/Joi/lib/types/binary/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/boolean/index.js",
+            "size": 2549,
+            "id": "./node_modules/Joi/lib/types/boolean/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/date/index.js",
+            "size": 4806,
+            "id": "./node_modules/Joi/lib/types/date/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/func/index.js",
+            "size": 2015,
+            "id": "./node_modules/Joi/lib/types/func/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/lazy/index.js",
+            "size": 1005,
+            "id": "./node_modules/Joi/lib/types/lazy/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/number/index.js",
+            "size": 5005,
+            "id": "./node_modules/Joi/lib/types/number/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/object/index.js",
+            "size": 26887,
+            "id": "./node_modules/Joi/lib/types/object/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/string/index.js",
+            "size": 20331,
+            "id": "./node_modules/Joi/lib/types/string/index.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/string/ip.js",
+            "size": 1352,
+            "id": "./node_modules/Joi/lib/types/string/ip.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/string/rfc3986.js",
+            "size": 7391,
+            "id": "./node_modules/Joi/lib/types/string/rfc3986.js"
+          },
+          {
+            "name": "./node_modules/Joi/lib/types/string/uri.js",
+            "size": 1291,
+            "id": "./node_modules/Joi/lib/types/string/uri.js"
+          },
+          {
+            "name": "./node_modules/Joi/package.json",
+            "size": 2293,
+            "id": "./node_modules/Joi/package.json"
+          },
+          {
+            "name": "./src/handler.js",
+            "size": 5181,
+            "id": "./src/handler.js"
+          },
+          {
+            "name": "./src/resolvers.js",
+            "size": 1749,
+            "id": "./src/resolvers.js"
+          },
+          {
+            "name": "./src/schema.js",
+            "size": 785,
+            "id": "./src/schema.js"
+          },
+          {
+            "name": "external \"apollo-server-lambda\"",
+            "size": 42,
+            "id": "apollo-server-lambda"
+          },
+          {
+            "name": "external \"aws-sdk\"",
+            "size": 42,
+            "id": "aws-sdk"
+          },
+          {
+            "name": "external \"babel-polyfill\"",
+            "size": 42,
+            "id": "babel-polyfill"
+          },
+          {
+            "name": "external \"dynogels-promisified\"",
+            "size": 42,
+            "id": "dynogels-promisified"
+          },
+          {
+            "name": "external \"graphql\"",
+            "size": 42,
+            "id": "graphql"
+          },
+          {
+            "name": "external \"graphql-playground-middleware\"",
+            "size": 42,
+            "id": "graphql-playground-middleware"
+          },
+          {
+            "name": "external \"graphql-tools\"",
+            "size": 42,
+            "id": "graphql-tools"
+          },
+          {
+            "name": "external \"hoek\"",
+            "size": 42,
+            "id": "hoek"
+          },
+          {
+            "name": "external \"isemail\"",
+            "size": 42,
+            "id": "isemail"
+          },
+          {
+            "name": "external \"joiql\"",
+            "size": 42,
+            "id": "joiql"
+          },
+          {
+            "name": "external \"net\"",
+            "size": 42,
+            "id": "net"
+          },
+          {
+            "name": "external \"topo\"",
+            "size": 42,
+            "id": "topo"
+          }
+        ]
+      }
+    ]
+  }
+]

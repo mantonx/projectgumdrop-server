@@ -7,6 +7,7 @@
   ],
   "plugins": [
     "babel-plugin-inline-import-graphql-ast",
-    "lodash"
+    "lodash",
+    "transform-runtime"
   ]
 }

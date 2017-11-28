@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "Project GumDrop",
   "scripts": {
-    "dynamodb-start-server-lambda:offline": "serverless dynamodb install && env-cmd ./config/security.env.local serverless offline start"
+    "dynamodb-start-server-lambda:offline": "serverless dynamodb install && env-cmd ./config/security.env.local serverless offline start --webpackstats",
+    "dynamodb-start-admin": "export DYNAMO_ENDPOINT=http://localhost:8000 && dynamodb-admin"
   },
   "author": "",
   "license": "MIT",
@@ -28,7 +29,8 @@
     "serverless-domain-manager": "1.1.20",
     "serverless-dynamodb-client": "0.0.2",
     "serverless-dynamodb-local": "0.2.26",
-    "uuid": "^2.0.3"
+    "uuid": "^2.0.3",
+    "yargs": "10.0.3"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -36,21 +38,28 @@
     "babel-loader": "7.1.2",
     "babel-minify": "0.2.0",
     "babel-plugin-lodash": "3.3.2",
+    "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.6.1",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "body-parser": "1.18.2",
+    "compression-webpack-plugin": "1.0.1",
     "cors": "2.8.4",
+    "dynamodb-admin": "2.0.2",
     "env-cmd": "7.0.0",
     "faker": "4.1.0",
+    "hard-source-webpack-plugin": "0.4.11",
     "imports-loader": "0.7.1",
     "jest": "21.2.1",
     "jsonfile": "4.0.0",
     "serverless-dynamodb-local": "0.2.26",
     "serverless-offline": "3.16.0",
     "serverless-webpack": "4.0.0",
+    "uglifyjs-webpack-plugin": "1.1.1",
     "webpack": "3.8.1",
+    "webpack-bundle-analyzer": "2.9.1",
+    "webpack-monitor": "1.0.13",
     "webpack-node-externals": "1.6.0"
   }
 }
