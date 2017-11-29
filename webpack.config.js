@@ -44,7 +44,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new HardSourceWebpackPlugin(),
     new UglifyJsPlugin({
       uglifyOptions: {
         mangle: true,

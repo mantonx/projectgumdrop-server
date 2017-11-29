@@ -1,9 +1,15 @@
 type User {   
-  id: ID!
-  email: String,
-  firstName: String
-  lastName: String
+  id: ID! @isUnique
+  email: String @isUnique
+  firstName: String!
+  lastName: String!
   uuid: String
+  createdAt: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
 }
 
 input userInput {
@@ -13,9 +19,10 @@ input userInput {
 }
 
 type Query {
-  getUser(email: String!): User
+  getUser(id: ID!): User
 }
 
 type Mutation {
-  addUser(email: String!, firstName: String!, lastName: String!): User
+  addUser(id: ID!, email: String!, firstName: String!, lastName: String!): User
+  removeUser(id: ID!): User
 }
