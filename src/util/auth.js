@@ -1,5 +1,3 @@
-'use strict';
-
 import jwt from 'jsonwebtoken';
 import jwkToPem from 'jwk-to-pem';
 import request from 'request';
@@ -8,20 +6,20 @@ const iss = 'https://projectgumdrop.auth0.com/';
 
 // Policy helper function
 const generatePolicy = (principalId, effect, resource) => {
-  const authResponse = {}
-  authResponse.principalId = principalId
+  const authResponse = {};
+  authResponse.principalId = principalId;
   if (effect && resource) {
-    const policyDocument = {}
-    policyDocument.Version = '2012-10-17'
-    policyDocument.Statement = []
-    const statementOne = {}
-    statementOne.Action = 'execute-api:Invoke'
-    statementOne.Effect = effect
-    statementOne.Resource = resource
-    policyDocument.Statement[0] = statementOne
-    authResponse.policyDocument = policyDocument
+    const policyDocument = {};
+    policyDocument.Version = '2012-10-17';
+    policyDocument.Statement = [];
+    const statementOne = {};
+    statementOne.Action = 'execute-api:Invoke';
+    statementOne.Effect = effect;
+    statementOne.Resource = resource;
+    policyDocument.Statement[0] = statementOne;
+    authResponse.policyDocument = policyDocument;
   }
-  return authResponse
+  return authResponse;
 };
 
 const Auth = (event, context, callback) => {
@@ -33,10 +31,9 @@ const Auth = (event, context, callback) => {
   const tokenValue = tokenParts[1];
 
   if (!(tokenParts[0].toLowerCase() === 'bearer' && tokenValue)) {
-    console.log('Token does not exist.')
-    return callback('Unauthorized')
+    console.log('Token does not exist.');
+    return callback('Unauthorized');
   }
-  
   request(
     { url: `${iss}.well-known/jwks.json`, json: true },
     (error, response, body) => {
@@ -57,17 +54,17 @@ const Auth = (event, context, callback) => {
           if (err) {
             console.log('Unauthorized user:', err.message);
             return callback('Unauthorized');
-          } else {
-            return callback(null, generatePolicy(decoded.sub, 'Allow', event.methodArn));
           }
+          return callback(null, generatePolicy(decoded.sub, 'Allow', event.methodArn));
         });
-      } catch (error) {
-        console.error('catch error. Invalid token', error);
+      } catch (invalid) {
+        console.error('catch error. Invalid token', invalid);
         return callback('Unauthorized');
       }
-    });
+      return true;
+    },
+  );
+  return false;
 };
 
-export { Auth };
-
-
+export default Auth;

@@ -1,8 +1,6 @@
-'use strict';
-
 import { Endpoint } from './connections';
 
-export const resolvers = {
+const resolvers = {
   Query: {
     getUser: (_, args, context) => {
       return Endpoint.getUser(args);
@@ -17,3 +15,6 @@ export const resolvers = {
     },
   },
 };
+
+export default resolvers;
+

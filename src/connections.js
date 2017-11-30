@@ -2,7 +2,7 @@
 
 import AWS from 'aws-sdk';
 import dynogels from 'dynogels-promisified';
-import { User } from './schema';
+import User from './schema';
 
 const dynamodb = new AWS.DynamoDB({
   region: 'localhost',

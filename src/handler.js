@@ -1,14 +1,12 @@
-'use strict';
-
-import { Auth } from './util/auth';
+import { graphqlLambda } from 'apollo-server-lambda';
 import { makeExecutableSchema } from 'graphql-tools';
-import { schema } from './schema.graphql';
-import { resolvers } from './resolvers';
-import { graphqlLambda, graphiqlLambda } from 'apollo-server-lambda';
 import { lambdaPlayground } from 'graphql-playground-middleware';
+import Auth from './util/auth';
+import { User } from './schema.graphql';
+import resolvers from './resolvers';
 
 const GraphQLSchema = makeExecutableSchema({
-  typeDefs: schema,
+  typeDefs: User,
   resolvers,
   logger: console,
 });
