@@ -29,7 +29,7 @@ exports.graphqlHandler = function graphqlHandler(event, context, callback) {
 };
 
 exports.playgroundHandler = lambdaPlayground({
-  endpoint: process.env.REACT_APP_GRAPHQL_ENDPOINT
-    ? process.env.REACT_APP_GRAPHQL_ENDPOINT
+  endpoint: process.env.GRAPHQL_ENDPOINT
+    ? process.env.GRAPHQL_ENDPOINT
     : '/production/graphql',
 });

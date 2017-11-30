@@ -61,9 +61,9 @@ const Auth = (event, context, callback) => {
             return callback(null, generatePolicy(decoded.sub, 'Allow', event.methodArn));
           }
         });
-      } catch (err) {
-        console.error('catch error. Invalid token', err)
-        return callback('Unauthorized')
+      } catch (error) {
+        console.error('catch error. Invalid token', error);
+        return callback('Unauthorized');
       }
     });
 };

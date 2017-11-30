@@ -73,6 +73,6 @@ module.exports = {
 
 if (argv.webpackstats) {
   module.exports.plugins.push(
-    new BundleAnalyzerPlugin()
+    new BundleAnalyzerPlugin({openAnalyzer: false})
   );
 }
