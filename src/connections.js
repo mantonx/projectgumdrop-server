@@ -40,6 +40,7 @@ const Endpoint = {
     })
     .catch(function(err){
       console.error(err);
+      return null;
     });
   },
   removeUser(args) {

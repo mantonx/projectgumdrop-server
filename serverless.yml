@@ -42,12 +42,16 @@ provider:
       Resource: arn:aws:dynamodb:us-east-1:*:*
 
 functions:
+  auth:
+    handler: src/handler.auth
+    cors: true
   graphql:
     handler: src/handler.graphqlHandler
     events:
     - http:
         path: graphql
         method: post
+        authorizer: auth
         cors: true
   playground:
     handler: src/handler.playgroundHandler
@@ -56,16 +60,29 @@ functions:
         path: playground
         method: get
         cors: true
-  graphiql:
-    handler: src/handler.graphiqlHandler
-    events:
-    - http:
-        path: graphiql
-        method: get
-        cors: true
-
+        
 resources:
   Resources:
+    GatewayResponse:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+      ResponseType: EXPIRED_TOKEN
+      RestApiId:
+          Ref: 'ApiGatewayRestApi'
+      StatusCode: '401'
+    AuthFailureGatewayResponse:
+      Type: 'AWS::ApiGateway::GatewayResponse'
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: UNAUTHORIZED
+        RestApiId:
+          Ref: 'ApiGatewayRestApi'
+        StatusCode: '401'
     UsersDynamoDbTable:
       Type: AWS::DynamoDB::Table
       DeletionPolicy: Retain
