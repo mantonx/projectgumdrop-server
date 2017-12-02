@@ -62,4 +62,5 @@ typings/
 .DS_Store
 .serverless
 .webpack
+monitor
 

@@ -1,4 +1,4 @@
-import { Endpoint } from './connections';
+import Endpoint from './connections';
 
 const resolvers = {
   Query: {
