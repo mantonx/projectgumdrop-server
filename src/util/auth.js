@@ -31,7 +31,7 @@ const Auth = (event, context, callback) => {
   const tokenValue = tokenParts[1];
 
   if (!(tokenParts[0].toLowerCase() === 'bearer' && tokenValue)) {
-    console.log('Token does not exist.');
+    console.warn('Token does not exist.');
     return callback('Unauthorized');
   }
   request(
@@ -52,7 +52,7 @@ const Auth = (event, context, callback) => {
       try {
         jwt.verify(tokenValue, pem, { issuer: iss }, (err, decoded) => {
           if (err) {
-            console.log('Unauthorized user:', err.message);
+            console.warn('Unauthorized user:', err.message);
             return callback('Unauthorized');
           }
           return callback(null, generatePolicy(decoded.sub, 'Allow', event.methodArn));

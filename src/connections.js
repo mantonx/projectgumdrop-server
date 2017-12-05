@@ -2,12 +2,15 @@ import AWS from 'aws-sdk';
 import dynogels from 'dynogels-promisified';
 import User from './schema';
 
-const dynamodb = new AWS.DynamoDB({
-  region: 'localhost',
-  endpoint: 'http://localhost:8000',
-});
-
-dynogels.dynamoDriver(dynamodb);
+if (process.env.ENV === 'local') {
+  const dynamodb = new AWS.DynamoDB({
+    region: 'localhost',
+    endpoint: 'http://localhost:8000',
+  });
+  dynogels.dynamoDriver(dynamodb);
+} else {
+  dynogels.AWS.config.update({ region: 'us-east-1' });
+}
 
 const Users = dynogels.define('users', {
   hashKey: 'id',

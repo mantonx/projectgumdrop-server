@@ -8,6 +8,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: (_, args, context) => {
+      console.log(process.env);
       return Endpoint.addUser(args);
     },
     removeUser: (_, args, context) => {

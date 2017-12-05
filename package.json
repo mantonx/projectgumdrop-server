@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "description": "Project GumDrop",
   "scripts": {
-    "dynamodb-start-server-lambda:offline": "serverless dynamodb install && env-cmd ./config/security.env.local serverless offline start --webpackstats",
-    "dynamodb-start-admin": "export DYNAMO_ENDPOINT=http://localhost:8000 && dynamodb-admin"
+    "dynamodb-start-server-lambda:full-deploy-prod": "sls -s prod deploy -v",
+    "dynamodb-start-server-lambda:full-deploy-stage": "sls -s qa deploy -v",
+    "dynamodb-start-server-lambda:graphql-deploy": "sls deploy function -f graphql -v",
+    "dynamodb-start-server-lambda:offline": "sls dynamodb install && env-cmd ./config/security.env.local sls offline start --webpackstats",
+    "dynamodb-start-local-admin": "export DYNAMO_ENDPOINT=http://localhost:8000 && dynamodb-admin"
   },
   "author": "",
   "license": "MIT",
@@ -20,6 +23,7 @@
     "dynogels": "9.0.0",
     "dynogels-promisified": "1.0.4",
     "graphql": "0.11.7",
+    "graphql-playground-middleware": "1.1.2",
     "graphql-tools": "2.8.0",
     "joi-browser": "13.0.1",
     "jsonwebtoken": "8.1.0",
@@ -51,8 +55,9 @@
     "env-cmd": "7.0.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "6.0.2",
+    "eslint-plugin-react": "7.5.1",
     "faker": "4.1.0",
-    "graphql-playground-middleware": "1.1.2",
     "hard-source-webpack-plugin": "0.4.11",
     "imports-loader": "0.7.1",
     "jest": "21.2.1",

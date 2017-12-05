@@ -1,4 +1,4 @@
-service: project-gumpdrop
+service: project-gumdrop
 
 plugins:
   - serverless-domain-manager
@@ -19,16 +19,18 @@ custom:
       inMemory: true
       migrate: true
   customDomain:
-    basePath: ''
+    basePath: ${self:custom.currentStage}
     domainName: api.projectgumdrop.com
-    stage: ${self:provider.stage}
+    stage: ${self:custom.currentStage}
     createRoute53Record: true
+  currentStage: ${opt:stage, self:custom.defaultStage}
+  defaultStage: 'dev'
 
 provider:
   name: aws
   runtime: nodejs6.10
   region: us-east-1
-  stage: dev
+  stage: ${self:custom.currentStage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -69,10 +71,10 @@ resources:
         ResponseParameters:
           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
           gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
-      ResponseType: EXPIRED_TOKEN
-      RestApiId:
+        ResponseType: EXPIRED_TOKEN
+        RestApiId:
           Ref: 'ApiGatewayRestApi'
-      StatusCode: '401'
+        StatusCode: '401'
     AuthFailureGatewayResponse:
       Type: 'AWS::ApiGateway::GatewayResponse'
       Properties:
@@ -87,7 +89,7 @@ resources:
       Type: AWS::DynamoDB::Table
       DeletionPolicy: Retain
       Properties:
-        TableName: 'users'
+        TableName: 'users-${self:custom.currentStage}'
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S
