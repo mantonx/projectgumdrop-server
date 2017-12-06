@@ -4,9 +4,10 @@
   "description": "Project GumDrop",
   "scripts": {
     "dynamodb-start-server-lambda:full-deploy-prod": "sls -s prod deploy -v",
-    "dynamodb-start-server-lambda:full-deploy-stage": "sls -s qa deploy -v",
-    "dynamodb-start-server-lambda:graphql-deploy": "sls deploy function -f graphql -v",
-    "dynamodb-start-server-lambda:offline": "sls dynamodb install && env-cmd ./config/security.env.local sls offline start --webpackstats",
+    "dynamodb-start-server-lambda:full-deploy-qa": "sls -s qa deploy -v",
+    "dynamodb-start-server-lambda:graphql-deploy-prod": "sls -s prod deploy function -f graphql -v",
+    "dynamodb-start-server-lambda:graphql-deploy-qa": "sls -s qa deploy function -f graphql -v",
+    "dynamodb-start-server-lambda:offline": "sls dynamodb install && sls -s dev offline start --webpackstats",
     "dynamodb-start-local-admin": "export DYNAMO_ENDPOINT=http://localhost:8000 && dynamodb-admin"
   },
   "author": "",

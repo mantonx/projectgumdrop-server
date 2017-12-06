@@ -19,18 +19,22 @@ custom:
       inMemory: true
       migrate: true
   customDomain:
-    basePath: ${self:custom.currentStage}
-    domainName: api.projectgumdrop.com
+    basePath: ''
+    domainName: ${self:custom.stageVariables.DOMAIN_NAME}
     stage: ${self:custom.currentStage}
     createRoute53Record: true
   currentStage: ${opt:stage, self:custom.defaultStage}
   defaultStage: 'dev'
+  stageVariables: ${file(./config/config.${self:custom.currentStage}.yml)}
 
 provider:
   name: aws
+  environment:
+    currentStage: ${self:custom.currentStage}
   runtime: nodejs6.10
   region: us-east-1
   stage: ${self:custom.currentStage}
+  profile: ${self:custom.currentStage}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -89,7 +93,7 @@ resources:
       Type: AWS::DynamoDB::Table
       DeletionPolicy: Retain
       Properties:
-        TableName: 'users-${self:custom.currentStage}'
+        TableName: ${self:custom.stageVariables.USERS_DB_TABLE}
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S

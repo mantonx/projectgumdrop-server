@@ -2,7 +2,7 @@ import AWS from 'aws-sdk';
 import dynogels from 'dynogels-promisified';
 import User from './schema';
 
-if (process.env.ENV === 'local') {
+if (process.env.currentStage === 'dev') {
   const dynamodb = new AWS.DynamoDB({
     region: 'localhost',
     endpoint: 'http://localhost:8000',
@@ -12,7 +12,16 @@ if (process.env.ENV === 'local') {
   dynogels.AWS.config.update({ region: 'us-east-1' });
 }
 
-const Users = dynogels.define('users', {
+const stage = () => {
+  if (process.env.currentStage === 'dev') {
+    return 'dev-';
+  } else if (process.env.currentStage === 'qa') {
+    return 'qa-';
+  }
+  return '';
+};
+
+const Users = dynogels.define(`${stage()}users`, {
   hashKey: 'id',
   timestamps: true,
   schema: User,
